@@ -11,17 +11,23 @@ const Cal = () => {
     const result =(e)=>{
         setInput({...input,[e.target.name]:e.target.value})
         console.log(input)
-      }
-      const ans =(e)=>{
        
-       const interest = (input.loanAmount * (input.rate * 0.01))/input.month;
+
+      }
+      const submit =()=>{
+      
+        event.preventDefault()
+        const x=Number(input.loanAmount)
+        const y=Number(input.rate)
+        const z=Number(input.month)
+       
+       const interest = (x * (y * 0.01))/z;
         setFinal(interest)
         
         console.log(final)
 
-       
-
-       }
+      }
+     
     return (
         <div>
        <Card className="text-center">
@@ -107,10 +113,7 @@ const Cal = () => {
     </Form.Group>
    
     </Form.Row>
-    <Button type="submit" onClick={ans}>
-    Calculate
-  </Button>
-
+  
   <Form.Group controlId="formGridAddress2">
     <Form.Label>Purpose of loan</Form.Label>
     <Form.Control  name="purpose" placeholder="Apartment, studio, or floor"  onChange={result} />
@@ -122,7 +125,7 @@ const Cal = () => {
     <Form.Check type="checkbox" label="Agree to terms and conditions" />
   </Form.Group>
 
-  <Button variant="primary" type="submit" onSubmit={result}>
+  <Button variant="primary" type="submit" onSubmit={submit}>
     Submit
   </Button>
 </Form>
