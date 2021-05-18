@@ -6,12 +6,21 @@ import { Form } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
  import "./cal.css"
 const Cal = () => {
-    const [input, setInput] = useState({firstName:'',lastName:'',number:0,city:'',state:'',loanAmount:0,purpose:'',interest:0,interestInstallment:''})
-    const ans =(e)=>{
+    const [input, setInput] = useState({firstName:'',lastName:'',gender:'',number:0,city:'',state:'',zip:0,address:'',loanAmount:0,purpose:'',rate:0,month:0})
+    const [final, setFinal] = useState(0)
+    const result =(e)=>{
         setInput({...input,[e.target.name]:e.target.value})
-      }
-      const res=()=>{
         console.log(input)
+      }
+      const ans =(e)=>{
+       
+       const interest = (input.loanAmount * (input.rate * 0.01))/input.month;
+        setFinal(interest)
+        
+        console.log(final)
+
+       
+
        }
     return (
         <div>
@@ -21,19 +30,19 @@ const Cal = () => {
   <Form className="p">
   <Form.Row>
     <Form.Group as={Col} controlId="formGridEmail">
-      
+    
       <Form.Label>First Name</Form.Label>
-      <Form.Control type="text" placeholder="your name" />
+      <Form.Control name="firstName" type="text" placeholder="your name" onChange={result} />
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridPassword">
       <Form.Label>Last Name</Form.Label>
-      <Form.Control type="text" placeholder="your last name" />
+      <Form.Control name="lastName"type="text" placeholder="your last name"  onChange={result} />
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridState">
       <Form.Label>Gender</Form.Label>
-      <Form.Control as="select" defaultValue="Choose...">
+      <Form.Control as="select"  name="gender"defaultValue="Choose..."  onChange={result}>
         <option>Male</option>
         <option>Female</option>
         <option>Other</option>
@@ -45,7 +54,7 @@ const Cal = () => {
   
   <Form.Group controlId="formGridAddress2">
     <Form.Label>Contact Number</Form.Label>
-    <Form.Control placeholder="your number" />
+    <Form.Control name="number" placeholder="your number"  onChange={result} />
   </Form.Group>
 
 
@@ -54,7 +63,7 @@ const Cal = () => {
     
     <Form.Group as={Col} controlId="formGridState">
       <Form.Label>City</Form.Label>
-      <Form.Control as="select" defaultValue="Choose...">
+      <Form.Control as="select" name="city" defaultValue="Choose..."  onChange={result}>
         <option>....</option>
         <option></option>
       </Form.Control>
@@ -63,44 +72,48 @@ const Cal = () => {
       
     <Form.Group as={Col} controlId="formGridState">
       <Form.Label>State</Form.Label>
-      <Form.Control as="select" defaultValue="Choose...">
+      <Form.Control as="select"  name="state" defaultValue="Choose..."  onChange={result}>
         <option>Choose...</option>
         <option>...</option>
       </Form.Control>
     </Form.Group>
     <Form.Group as={Col} controlId="formGridZip">
       <Form.Label>Zip</Form.Label>
-      <Form.Control />
+      <Form.Control  name="zip"  onChange={result}/>
     </Form.Group>
   </Form.Row>
 
   <Form.Group controlId="formGridAddress1">
     <Form.Label>Address</Form.Label>
-    <Form.Control placeholder="textarea" />
+    <Form.Control  name="address" placeholder="textarea"  onChange={result} />
   </Form.Group>
   
   <Form.Row>
   <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label>Total Amount</Form.Label>
-      <Form.Control type="text" placeholder="" />
+      <Form.Control  name="loanAmount" type="text" placeholder=""  onChange={result} />
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridPassword">
       <Form.Label>Rate</Form.Label>
-      <Form.Control type="text" placeholder="" />
+      <Form.Control  name="rate" type="text" placeholder=""  onChange={result} />
     </Form.Group>
     <Form.Group as={Col} controlId="formGridState">
       <Form.Label>Monthly installments</Form.Label>
-      <Form.Control as="select" defaultValue="Choose...">
+      <Form.Control as="select"  name="month" defaultValue="Choose..."  onChange={result}>
         <option>6 </option>
         <option>12</option>
       </Form.Control>
     </Form.Group>
+   
     </Form.Row>
+    <Button type="submit" onClick={ans}>
+    Calculate
+  </Button>
 
   <Form.Group controlId="formGridAddress2">
     <Form.Label>Purpose of loan</Form.Label>
-    <Form.Control placeholder="Apartment, studio, or floor" />
+    <Form.Control  name="purpose" placeholder="Apartment, studio, or floor"  onChange={result} />
   </Form.Group>
   
  
@@ -109,7 +122,7 @@ const Cal = () => {
     <Form.Check type="checkbox" label="Agree to terms and conditions" />
   </Form.Group>
 
-  <Button variant="primary" type="submit">
+  <Button variant="primary" type="submit" onSubmit={result}>
     Submit
   </Button>
 </Form>
