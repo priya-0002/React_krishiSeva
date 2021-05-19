@@ -7,7 +7,8 @@ import { Col } from 'react-bootstrap';
  import "./cal.css"
  import m from "../../assets/m.png"
 const Cal = () => {
-    const [input, setInput] = useState({firstName:'',lastName:'',gender:'',number:0,city:'',state:'',zip:0,address:'',loanAmount:0,purpose:'',rate:0,month:0})
+    const [input, setInput] = useState({firstName:'',lastName:'',gender:'',number:0,city:'',state:'',zip:0,address:'',loanAmount:'',purpose:'',rate:
+    '',month:''})
     const [final, setFinal] = useState(0)
     const result =(e)=>{
         setInput({...input,[e.target.name]:e.target.value})
@@ -128,7 +129,7 @@ const Cal = () => {
     <Form.Check type="checkbox" label="Agree to terms and conditions" />
   </Form.Group>
 
-  <Button variant="primary" type="submit" onSubmit={submit}>
+  <Button variant="primary" type="submit" onClick={submit}>
     Submit
   </Button>
 </Form>
