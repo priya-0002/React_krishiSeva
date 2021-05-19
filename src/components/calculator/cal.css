@@ -1,8 +1,27 @@
 .text-center{
     width: 60%;
-    margin-left: 20%;
+    margin-left: 5%;
+    
 }
 .p{
     width: 60%;
-    margin-left: 20%;
+    margin-left: 0%;
+    color:darkcyan
+    
+}
+.cal__display{
+    display: flex;
+    
+  
+}
+
+.cal__img{
+    
+    margin-top: 20%;
+    margin-left: 5%;
+width: 60%;
+height: 40vh;
+}
+.form{
+    color: forestgreen;
 }

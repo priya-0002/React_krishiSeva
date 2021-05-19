@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
  import "./cal.css"
+ import m from "../../assets/m.png"
 const Cal = () => {
     const [input, setInput] = useState({firstName:'',lastName:'',gender:'',number:0,city:'',state:'',zip:0,address:'',loanAmount:0,purpose:'',rate:0,month:0})
     const [final, setFinal] = useState(0)
@@ -14,7 +15,7 @@ const Cal = () => {
        
 
       }
-      const submit =()=>{
+      const submit =(event)=>{
       
         event.preventDefault()
         const x=Number(input.loanAmount)
@@ -29,16 +30,21 @@ const Cal = () => {
       }
      
     return (
-        <div>
+        
+           <div className="cal__display">
+           
        <Card className="text-center">
   <Card.Header>Loan application and instant interest calculator</Card.Header>
+ 
+  
   <Card.Body>
+   
   <Form className="p">
-  <Form.Row>
+  
     <Form.Group as={Col} controlId="formGridEmail">
     
-      <Form.Label>First Name</Form.Label>
-      <Form.Control name="firstName" type="text" placeholder="your name" onChange={result} />
+      <Form.Label style={{color:"darkgreen",border:'2px blue'}}>First Name</Form.Label>
+      <Form.Control style={{color:"darkgreen",border:'2px blue'}} name="firstName" type="text" placeholder="your name" onChange={result} />
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridPassword">
@@ -56,7 +62,6 @@ const Cal = () => {
     </Form.Group>
 
    
-  </Form.Row>
   
   <Form.Group controlId="formGridAddress2">
     <Form.Label>Contact Number</Form.Label>
@@ -64,7 +69,7 @@ const Cal = () => {
   </Form.Group>
 
 
-  <Form.Row>
+  
    
     
     <Form.Group as={Col} controlId="formGridState">
@@ -87,32 +92,30 @@ const Cal = () => {
       <Form.Label>Zip</Form.Label>
       <Form.Control  name="zip"  onChange={result}/>
     </Form.Group>
-  </Form.Row>
+ 
 
   <Form.Group controlId="formGridAddress1">
     <Form.Label>Address</Form.Label>
     <Form.Control  name="address" placeholder="textarea"  onChange={result} />
   </Form.Group>
   
+   
   <Form.Row>
   <Form.Group as={Col} controlId="formGridEmail">
       <Form.Label>Total Amount</Form.Label>
-      <Form.Control  name="loanAmount" type="text" placeholder=""  onChange={result} />
+      <Form.Control  name="loanAmount"  type="number" placeholder=""  onChange={result} />
     </Form.Group>
 
     <Form.Group as={Col} controlId="formGridPassword">
       <Form.Label>Rate</Form.Label>
-      <Form.Control  name="rate" type="text" placeholder=""  onChange={result} />
+      <Form.Control  name="rate"  type="number" placeholder=""  onChange={result} />
     </Form.Group>
-    <Form.Group as={Col} controlId="formGridState">
-      <Form.Label>Monthly installments</Form.Label>
-      <Form.Control as="select"  name="month" defaultValue="Choose..."  onChange={result}>
-        <option>6 </option>
-        <option>12</option>
-      </Form.Control>
+    <Form.Group as={Col} controlId="formGridPassword">
+      <Form.Label>Month</Form.Label>
+      <Form.Control  name="month"  type="number" placeholder=""  onChange={result} />
     </Form.Group>
+ </Form.Row>
    
-    </Form.Row>
   
   <Form.Group controlId="formGridAddress2">
     <Form.Label>Purpose of loan</Form.Label>
@@ -129,9 +132,13 @@ const Cal = () => {
     Submit
   </Button>
 </Form>
+
+
   </Card.Body>
-  <Card.Footer className="text-muted">2 days ago</Card.Footer>
+  <Card.Footer className="text-muted"></Card.Footer>
+ 
 </Card>
+<img src={m} alt="" className="cal__img" />
         </div>
     )
 }
