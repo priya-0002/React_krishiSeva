@@ -19,6 +19,10 @@ const Weather = () => {
            
         
     }, [])
+    const atmosphere=(e)=>{
+        setWeather(e.target.value)
+        console.log(weather)
+    }
     return (
         <div>
              <h1>Weather app</h1>
