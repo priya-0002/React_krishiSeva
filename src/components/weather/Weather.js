@@ -20,12 +20,14 @@ const Weather = () => {
         
     }, [])
     const atmosphere=(e)=>{
+        const holdValue=
         setWeather(e.target.value)
         console.log(weather)
     }
     return (
         <div>
              <h1>Weather app</h1>
+             <input type="text" onClick={atmosphere}/>
             
             
            
