@@ -16,12 +16,13 @@ const Weather = () => {
         })
            
         
-    }, [])
+    }, [search])
    
 
     
     const atmosphere=(e)=>{
         setSearch(e.target.value)
+        console.log(search)
      
 
         
@@ -31,13 +32,9 @@ const Weather = () => {
         <div>
              <h1>Weather app</h1>
              <input type="text" onChange={atmosphere}/>
-            
-            
-           
-            
-         
-            
-        </div>
+          
+         </div>
+
     )
 }
 
