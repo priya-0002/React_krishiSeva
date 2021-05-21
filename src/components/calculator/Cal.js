@@ -10,12 +10,12 @@ const Cal = () => {
     const [input, setInput] = useState({firstName:'',lastName:'',gender:'',number:0,city:'',state:'',zip:0,address:'',loanAmount:'',purpose:'',rate:
     '',month:''})
     const [final, setFinal] = useState(0)
+    
     const result =(e)=>{
         setInput({...input,[e.target.name]:e.target.value})
         console.log(input)
-       
-
-      }
+        }
+        
       const submit =(event)=>{
       
         event.preventDefault()
