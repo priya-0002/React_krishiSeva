@@ -6,6 +6,7 @@ import { Form } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
  import "./cal.css"
  import m from "../../assets/m.png"
+ import {Link} from "react-router-dom"
 const Cal = () => {
     const [input, setInput] = useState({firstName:'',lastName:'',gender:'',number:0,city:'',state:'',zip:0,address:'',loanAmount:'',purpose:'',rate:
     '',month:''})
@@ -33,6 +34,7 @@ const Cal = () => {
     return (
         
            <div className="cal__display">
+             <Link to="/cal">Calculator 
            
        <Card className="text-center">
   <Card.Header>Loan application and instant interest calculator</Card.Header>
@@ -140,6 +142,7 @@ const Cal = () => {
  
 </Card>
 <img src={m} alt="" className="cal__img" />
+</Link>
         </div>
     )
 }
